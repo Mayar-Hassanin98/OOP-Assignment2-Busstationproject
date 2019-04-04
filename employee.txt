@@ -1,0 +1,5 @@
+ahmed,5600
+seif,6000
+sara,5800
+omar,4890
+salma,4260
