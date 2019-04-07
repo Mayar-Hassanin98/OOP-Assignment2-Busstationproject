@@ -10,5 +10,5 @@ package assignment.pkg2;
  * @author Israa Hassanin
  */
 public class Bus extends Vechile{
-    //hello
+    
 }
