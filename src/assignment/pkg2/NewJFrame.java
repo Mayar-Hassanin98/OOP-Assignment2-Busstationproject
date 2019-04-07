@@ -21,13 +21,13 @@ public class NewJFrame extends javax.swing.JFrame {
 
     ArrayList<User> users = new ArrayList<User>();
     ArrayList<Emp> employees = new ArrayList<Emp>();
-    ArrayList<Manag> manager = new ArrayList<Manag>();
+    
     User s;
     public NewJFrame() throws FileNotFoundException {
         initComponents();
         FillusersArray();
         FillemployeesArray();
-        FillmanagerArray();
+        
     }
 
     void FillusersArray() throws FileNotFoundException {
@@ -49,22 +49,13 @@ public class NewJFrame extends javax.swing.JFrame {
             String username = st.next();
             String password = st.next();
 
-            Emp e = new Emp(username, password);
+            Emp e = new Emp(username, password) {};
             employees.add(e);
         }
     }
 
-    void FillmanagerArray() throws FileNotFoundException {
-        File t = new File("manager.txt");
-        Scanner sm = new Scanner(t);
-        while (sm.hasNext()) {
-            String username = sm.next();
-            String password = sm.next();
-
-            Manag m = new Manag(username, password);
-            manager.add(m);
-        }
-    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,7 +69,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jTextField1.setText("select you categorie");
@@ -90,6 +80,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton1.setText("passenger");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +88,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton2.setText("employee");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +96,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("manager");
-
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel1.setText("select you categorie");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,30 +104,25 @@ public class NewJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(115, 115, 115)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(56, 56, 56)
                 .addComponent(jButton1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(35, 35, 35))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton2))
                 .addGap(114, 114, 114))
         );
 
@@ -157,7 +143,7 @@ public class NewJFrame extends javax.swing.JFrame {
         String password = n.pass;
         User s = null;
         for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getUsername().equals(user) && users.get(i).getUsername().equals(password)) {
+            if (users.get(i).getUsername().equals(username) && users.get(i).getUsername().equals(password)) {
                 s = users.get(i);
                 break;
             }
@@ -172,7 +158,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        login n = new login(s);
+        login n = new login();
         n.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         n.setSize(500, 500);
         n.setVisible(true);
@@ -181,13 +167,13 @@ public class NewJFrame extends javax.swing.JFrame {
         String password = n.pass;
         Emp e = null;
         for (int i = 0; i < users.size(); i++) {
-            if (employees.get(i).getUsername().equals(user) && employees.get(i).getUsername().equals(password)) {
+            if (employees.get(i).getUsername().equals(username) && employees.get(i).getUsername().equals(password)) {
                 e = employees.get(i);
                 break;
             }
         }
         if (e != null) {
-            trips sss = new trips(e);
+            trips sss = new trips();
             sss.setVisible(true);
             sss.setSize(500, 500);
         } else {
@@ -234,8 +220,9 @@ public class NewJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
+
+

@@ -10,7 +10,7 @@ package assignment.pkg2;
  *
  * @author USER
  */
-public class User {
+public  class  User {
 private String username;
 private String password;
 
